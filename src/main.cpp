@@ -108,6 +108,10 @@ static AzIoTSasToken sasToken(
     AZ_SPAN_FROM_BUFFER(sas_signature_buffer),
     AZ_SPAN_FROM_BUFFER(mqtt_password));
 
+
+// ESp32 MacAddress
+
+String mac_address;
 static void connectToWiFi()
 {
   Logger.Info("Connecting to WIFI SSID " + String(ssid));
@@ -121,6 +125,9 @@ static void connectToWiFi()
   }
 
   Serial.println("");
+  Serial.print("ESP Board MAC Address:  ");
+  mac_address = WiFi.macAddress();
+  Serial.println(mac_address);
 
   Logger.Info("WiFi connected, IP address: " + WiFi.localIP().toString());
 }
